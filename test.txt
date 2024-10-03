@@ -1,0 +1,7 @@
+This is a test file, and (as instructed) it has
+several different types of ASCII characters.
+>:D
+Apparently I have to generate a few HUNDRED
+characters so I guess I'll just have to ramble a
+bit until I have a fairly reasonable sample of
+english text. Hopefully this is good enough!
