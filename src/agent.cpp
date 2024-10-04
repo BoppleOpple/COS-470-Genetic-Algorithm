@@ -76,9 +76,20 @@ Agent *Agent::crossover(const Agent *o, const float &mr) {
 		newGenes[i] = ( newGenes[i] | mutationMask ) - ( newGenes[i] & mutationMask );
 		*/
 
+		/*
+		// maybe increment/decrement characters alongside mse?
+		if (rand() < RAND_MAX * mr) {
+			if (rand() % 2 == 0)
+				newGenes[i] += 1;
+			else
+				newGenes[i] -= 1;
+		}
+		*/
+
 		// mutate chars instead, it works way better
 		if (rand() < RAND_MAX * mr) 
 			newGenes[i] = rand() % CHAR_MAX;
+
 	}
 
 	// make a new child with the new genes
@@ -98,12 +109,14 @@ double Agent::calcFitness(const std::string &target) {
 	fitness = 0.0;
 
 	for (int i = 0; i < genes.length(); i++) {
-		// MSQE sort of thing, just a function with a maximum at the desired value
+		// MSE sort of thing, just a function with a maximum at the desired value
 		// fitness += 1 - double(abs( genes[i] - target[i] )) / double(CHAR_MAX);
 
 		// just count how many are right, it works better and isnt a pain
 		if (genes[i] == target[i]) fitness++;
 	}
+
+	fitness /= genes.length();
 
 	return fitness;
 }
